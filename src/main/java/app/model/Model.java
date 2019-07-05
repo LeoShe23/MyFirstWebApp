@@ -48,9 +48,10 @@ public class Model {
     public List<User> selectUsersAndRoles() {
         List<User> users = new ArrayList<>();
         try {
-            rs = statement.executeQuery("SELECT users.name, roles.type FROM users LEFT JOIN roles ON users.type=roles.id;");
+            rs = statement.executeQuery("SELECT users.id, users.name, roles.type FROM users LEFT JOIN roles ON users.type=roles.id;");
             while (rs.next()) {
                 User user = new User();
+                user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setType(rs.getString("type"));
                 users.add(user);
@@ -80,4 +81,11 @@ public class Model {
         return roles;
     }
 
+    public User getUserById(int userId) {
+        return null;
+    }
+
+    public void deleteUserById(int userId) {
+
+    }
 }

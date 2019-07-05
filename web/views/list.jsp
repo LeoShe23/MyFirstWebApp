@@ -6,6 +6,7 @@
   Time: 14:25
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,8 +23,10 @@
     <%
         List<User> list = (List<User>) request.getAttribute("userNames");
         if (list != null && !list.isEmpty()) {
-            for (User s : list)
-                out.write("<li class=\"w3-hover-sand\">" + s.getName() + " (" + s.getType() + ")</li>");
+            for (User s : list) {
+                out.write("<li class=\"w3-hover-sand\">" + s.getName() + " (" + s.getType() + ") <a href=\"/edit?action=update&userID=" + s.getId() + "\"/>update</a></li>");
+//                out.write("<li class=\"w3-hover-sand\">" + s.getName() + " (" + s.getType() + ") <a href=\"/save?action=update&userID=1\"/>update</a></li>");
+            }
         }
         else
             out.println("<div class=\"w3-panel w3-red w3-display-container w3-card-4 w3-round\">\n"

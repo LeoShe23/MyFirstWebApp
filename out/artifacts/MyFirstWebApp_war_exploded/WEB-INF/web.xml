@@ -24,4 +24,15 @@
         <servlet-name>list</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
+
+    <!-- edit servlet -->
+    <servlet>
+        <servlet-name>edit</servlet-name>
+        <servlet-class>app.servlets.EditServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>edit</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
 </web-app>
