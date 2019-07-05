@@ -82,10 +82,32 @@ public class Model {
     }
 
     public User getUserById(int userId) {
-        return null;
+        User user = new User();
+        try {
+            dBase = DBase.getInstance();
+            Statement statement = dBase.getConnection().createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE users.id=" + userId + ";");
+            while (rs.next()) {
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setPass(rs.getString("pass"));
+                user.setType(rs.getString("type"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     public void deleteUserById(int userId) {
 
+    }
+
+    public void updateUser(User user) {
+        try {
+            statement.execute("UPDATE users SET name='" + user.getName() + "', pass='" + user.getPass() + "', type=" + user.getType() + " WHERE id=" + user.getId() + ";");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

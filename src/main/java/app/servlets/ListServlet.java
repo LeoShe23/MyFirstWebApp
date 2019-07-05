@@ -27,7 +27,7 @@ public class ListServlet extends HttpServlet {
         String action=req.getParameter("action");//создаём action который будет реагировать на те или иные действия
         if(action.equalsIgnoreCase("update")){//если action отреагировал на update
             req.setAttribute("user",model.getUserById(Integer.parseInt(req.getParameter("userId"))));//создаём атрибут который по id возвращает определённого HeroesEntity
-            RequestDispatcher requestDispatcher=req.getRequestDispatcher("update.jsp");////перебрасываемся на update.jsp
+            RequestDispatcher requestDispatcher=req.getRequestDispatcher("edit.jsp");////перебрасываемся на edit.jsp
             requestDispatcher.forward(req,resp);
         }
         if(action.equalsIgnoreCase("delete")){//если action отреагировал на update
