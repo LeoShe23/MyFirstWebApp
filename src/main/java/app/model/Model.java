@@ -38,7 +38,6 @@ public class Model {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//        model.add(user);
     }
 
     public List<String> list() {
@@ -60,7 +59,6 @@ public class Model {
             e.printStackTrace();
         }
         return users;
-//        return users.stream().map(User::getNameAndType).collect(Collectors.toList());
     }
 
     public List<Role> getRoleList() {
@@ -100,7 +98,11 @@ public class Model {
     }
 
     public void deleteUserById(int userId) {
-
+        try {
+            statement.execute("DELETE FROM users WHERE users.id=" + userId + ";");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void updateUser(User user) {

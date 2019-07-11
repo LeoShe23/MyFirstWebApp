@@ -37,7 +37,6 @@ public class EditServlet extends HttpServlet {
         user.setPass(req.getParameter("pass"));
         user.setType(req.getParameter("roles"));
         user.setId(Integer.parseInt(req.getParameter("userID")));
-        System.out.println(user);
 
         Model.getInstance().updateUser(user);
         req.setAttribute("userName", user.getName());
